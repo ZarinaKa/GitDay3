@@ -4,6 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -45,6 +46,21 @@ public class LoginTests {
             Assert.assertEquals(driver.getTitle(), "Web Orders Login");
 
         }
+
+    @Test
+    public void negativeLoginTest(){
+        driver.get("http://secure.smartbearsoftware.com/samples/testcomplete12/WebOrders/login.aspx");
+        driver.findElement(By.id("ctl00_MainContent_username")).sendKeys("Tester");
+        driver.findElement(By.id("ctl00_MainContent_password")).sendKeys("test" + Keys.ENTER);
+        WebElement errorMsg = driver.findElement(By.id("ctl00_MainContent_status"));
+
+
+        Assert.assertEquals(errorMsg, "Web Orders Login");
+
+    }
+
+
+
 
         @AfterMethod
         public void cleanUp() {
