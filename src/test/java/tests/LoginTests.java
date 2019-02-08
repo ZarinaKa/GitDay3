@@ -16,6 +16,8 @@ import java.util.concurrent.TimeUnit;
 
 public class LoginTests {
 
+    //Login tests are maintain here
+    //without Page object approach
 
         WebDriver driver;
 
@@ -65,6 +67,7 @@ public class LoginTests {
         @AfterMethod
         public void cleanUp() {
             driver.close();
+
         }
 
     }
